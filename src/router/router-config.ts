@@ -24,7 +24,7 @@ const routes = {
     name: 'ProjectsPage',
     component: ProjectsPage,
     meta: {
-      transition: 'slide',
+      transition: 'slide-right',
     },
   },
 };

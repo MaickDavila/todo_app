@@ -4,11 +4,11 @@ import { computed, defineProps } from 'vue';
 const props = defineProps({
   percentage: {
     type: Number,
-    default: () => 20,
+    default: () => 0,
   },
 });
 
-const radius = 25;
+const radius = 20;
 const circumference = 2 * Math.PI * radius;
 
 const offset = computed(() => {
@@ -23,27 +23,34 @@ const offset = computed(() => {
       <circle
         class="progress-ring__circle"
         :stroke="props.percentage == 100 ? '#10B981' : '#5f33e2'"
-        stroke-width="2"
+        stroke-width="3"
         fill="transparent"
         r="20"
         cx="25"
         cy="25"
+        :style="{ strokeDashoffset: offset }"
       />
     </svg>
-    <span class="z-10 absolute">{{ percentage }}%</span>
+    <span class="z-auto absolute">{{ percentage }}%</span>
   </div>
 </template>
 
 <style scoped>
 .progress-ring__circle {
-  transition: stroke-dashoffset 0.35s;
+  transition: stroke-dashoffset 1s ease-in-out;
   transform: rotate(-90deg);
   transform-origin: 50% 50%;
-  border-radius: 50%;
+  stroke-dasharray: 125.66370614359172;
+  animation: dash 1s linear;
 }
 
-.progress-ring__circle {
-  stroke-dasharray: 157; /* 2 * Math.PI * 25 */
-  stroke-dashoffset: v-bind(offset);
+@keyframes dash {
+  to {
+    stroke-dashoffset: v-bind(offset);
+  }
+
+  from {
+    stroke-dashoffset: 157;
+  }
 }
 </style>

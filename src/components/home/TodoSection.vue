@@ -43,7 +43,7 @@ const testList = [
       <app-badge :count="20" :state="EBadgeStates.DANGER" />
     </div>
 
-    <div class="w-full flex gap-3 overflow-x-auto overscroll-x-none py-2 px-3">
+    <div class="w-full flex gap-3 overflow-x-auto overscroll-x-none py-2">
       <div class="todo-list-item" v-for="(todo, i) in testList" :key="i">
         <div class="text-xs text-gray-500 font-light">
           <h3>{{ todo.title }}</h3>

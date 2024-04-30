@@ -8,6 +8,7 @@ export default {
         success: '#00c853',
         danger: '#ff1744',
         warning: '#ff9100',
+        primary_subtle: '#cdc2ef',
       },
       fontFamily: {
         inter: ['Inter', 'sans-serif'],

@@ -23,7 +23,7 @@ const inProgressTestList = [
     title: 'Add new feature',
     description: 'Add a new feature',
     dueDate: '4 days left',
-    progress: 60,
+    progress: 70,
   },
   {
     id: 4,
@@ -43,7 +43,7 @@ const inProgressTestList = [
 </script>
 
 <template>
-  <section class="flex flex-col gap-3 w-full">
+  <section class="flex flex-col gap-3 w-full pb-24">
     <div class="section-title">
       <h2>In Progress</h2>
       <app-badge :count="5" :state="EBadgeStates.WARNING" />
@@ -65,7 +65,7 @@ const inProgressTestList = [
           </div>
 
           <div class="text-xs text-gray-500 font-light mt-3">
-            <p>2 days left</p>
+            <p>{{ todo.dueDate }}</p>
           </div>
         </div>
 

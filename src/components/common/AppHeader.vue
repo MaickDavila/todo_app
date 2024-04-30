@@ -7,7 +7,7 @@ const getUserName = computed(() => mainStore.getUserName());
 </script>
 
 <template>
-  <div class="flex items-end justify-between p-3 pb-6 px-6 rounded-3xl bg-white">
+  <div class="flex items-end justify-between p-3 px-6 rounded-3xl bg-white">
     <div class="text-lg">
       <h1>
         Hola, <b>{{ getUserName }}</b>
