@@ -46,15 +46,18 @@ function goToProjectDetail(project: IProject) {
 
     <div class="w-full flex flex-col gap-3 h-auto">
       <div
-        class="flex p-3 items-center justify-between rounded-2xl bg-white cursor-pointer hover:shadow transition duration-300 ease-in-out transform hover:-translate-y-1"
+        class="flex p-3 items-center justify-between rounded-2xl bg-white hover:shadow transition duration-300 ease-in-out transform hover:-translate-y-1"
         v-for="(project, i) in projectsList"
         :key="i"
-        @click="goToProjectDetail(project)"
       >
-        <div class="flex flex-col w-1/2">
-          <div class="font-bold text-base capitalize">
+        <div class="flex flex-col gap-2 w-1/2">
+          <button
+            class="font-bold text-base capitalize flex items-center gap-3 hover:underline"
+            @click="goToProjectDetail(project)"
+          >
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
             <h3>{{ project.name }}</h3>
-          </div>
+          </button>
 
           <div class="text-xs text-gray-500">
             <p class="truncate">{{ project.description }}</p>
