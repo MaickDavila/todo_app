@@ -39,7 +39,7 @@ function goToHomePage() {
           <p class="text-center text-xs text-gray-500">Para comenzar, necesitamos tu nombre</p>
         </div>
 
-        <input v-model="userName" type="text" placeholder="Ej. Jhon Doe" class="app-input" />
+        <input v-model="userName" type="text" placeholder="Ej. Jhon Doe" class="app-input" autofocus />
         <app-button> Iniciar sesión </app-button>
       </form>
     </div>

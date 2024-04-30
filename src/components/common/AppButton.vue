@@ -5,6 +5,11 @@ defineProps({
     required: false,
     default: false,
   },
+  outline: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
 });
 
 defineEmits({
@@ -13,10 +18,14 @@ defineEmits({
 </script>
 
 <template>
-  <button class="app-button" @click="$emit('click')" :disabled="loading">
+  <button :class="`app-button ${outline ? 'app-button-outline' : ''}`" @click="$emit('click')" :disabled="loading">
     <div class="flex items-center justify-center gap-3 w-full">
       <slot></slot>
-      <div v-if="loading" class="rounded-full h-3 w-3 border-2 border-t-0 border-white animate-spin" />
+      <div
+        v-if="loading"
+        class="rounded-full h-3 w-3 border-2 border-t-0 animate-spin"
+        :class="`border-${outline ? 'black' : 'white'}`"
+      ></div>
     </div>
   </button>
 </template>

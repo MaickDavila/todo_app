@@ -4,16 +4,19 @@ import { reactive } from 'vue';
 interface IState {
   projects: IProject[];
   isOpenFormModal: boolean;
+  projectSelected: IProject | null;
 }
 
 const state = reactive<IState>({
   projects: [],
   isOpenFormModal: false,
+  projectSelected: null,
 });
 
 const getters = {
-  getProjects: () => state.projects,
+  getProjects: () => state.projects as IProject[],
   getIsOpenFormModal: () => state.isOpenFormModal,
+  getProjectSelected: () => state.projectSelected,
 };
 
 const mutations = {
@@ -21,17 +24,21 @@ const mutations = {
     state.projects = projects;
   },
   createProject: (project: IProject) => {
-    state.projects.push(project);
+    project.id = Math.floor(Math.random() * 1000);
+    state.projects.push(Object.assign({}, project));
   },
   deleteProject: (projectId: number) => {
     state.projects = state.projects.filter((project) => project.id !== projectId);
   },
   updateProject: (updatedProject: IProject) => {
     const index = state.projects.findIndex((project) => project.id === updatedProject.id);
-    state.projects[index] = updatedProject;
+    state.projects[index] = Object.assign({}, updatedProject);
   },
   setIsOpenFormModal: (isOpen: boolean) => {
     state.isOpenFormModal = isOpen;
+  },
+  setProjectSelected: (project: IProject | null) => {
+    state.projectSelected = project;
   },
 };
 
