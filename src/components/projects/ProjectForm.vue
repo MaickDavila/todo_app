@@ -12,7 +12,6 @@ const form = ref({
 
 const isLoading = ref(false);
 const txtName = ref<HTMLInputElement | null>(null);
-const isLoadingDeleting = ref(false);
 const projectSelected = computed(() => projectStore.getProjectSelected());
 
 const isOpenFormModal = computed({
@@ -46,24 +45,13 @@ function submitProject() {
   }, 700);
 }
 
-function deleteProject() {
-  if (!projectSelected.value) return;
-
-  isLoadingDeleting.value = true;
-
-  setTimeout(() => {
-    projectStore.deleteProject(projectSelected.value?.id as number);
-    isLoadingDeleting.value = false;
-    isOpenFormModal.value = false;
-  }, 700);
-}
-
 function onMountedEvent() {
   setTimeout(() => {
     txtName.value?.focus();
   }, 100);
 
   if (projectSelected.value) {
+    form.value.id = projectSelected.value.id || 0;
     form.value.name = projectSelected.value.name;
     form.value.description = projectSelected.value.description || '';
   }
@@ -109,9 +97,6 @@ watch(isOpenFormModal, (value) => {
       <div class="flex flex-col gap-2 items center justify-between">
         <app-button @click="submitProject" :loading="isLoading"
           >{{ !projectSelected ? 'Create' : 'Update' }} Project</app-button
-        >
-        <app-button v-if="projectSelected" outline :loading="isLoadingDeleting" @click="deleteProject"
-          >Eliminar</app-button
         >
       </div>
     </form>

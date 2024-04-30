@@ -14,7 +14,7 @@ const state = reactive<IState>({
 });
 
 const getters = {
-  getProjects: () => state.projects as IProject[],
+  getProjects: () => state.projects,
   getIsOpenFormModal: () => state.isOpenFormModal,
   getProjectSelected: () => state.projectSelected,
   existProject: (projectId: number) => state.projects.some((project) => project.id === projectId),
@@ -35,6 +35,7 @@ const mutations = {
   updateProject: (updatedProject: IProject) => {
     const index = state.projects.findIndex((project) => project.id === updatedProject.id);
     state.projects[index] = Object.assign({}, updatedProject);
+    state.projects = [...state.projects];
   },
   setIsOpenFormModal: (isOpen: boolean) => {
     state.isOpenFormModal = isOpen;

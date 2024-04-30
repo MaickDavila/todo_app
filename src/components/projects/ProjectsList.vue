@@ -1,17 +1,18 @@
 <script setup lang="ts">
 import AppBadge from '@/components/common/AppBadge.vue';
 import { EBadgeStates, IProject } from '@/types/commonTypes.ts';
-import { computed, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import projectStore from '@/components/projects/project.store.ts';
 import AppModal from '@/components/common/AppModal.vue';
 import { useRouter } from 'vue-router';
 import routerConfig from '@/router/router-config.ts';
 
-const projectsList = computed(() => projectStore.getProjects());
 const isDeleteModalOpen = ref(false);
 const localProjectSelected = ref<IProject | null>(null);
 const isDeletingLoading = ref(false);
 const router = useRouter();
+
+const projectsList = computed(() => projectStore.getProjects());
 
 function setProject(project: IProject) {
   projectStore.setProjectSelected(project);
@@ -35,6 +36,10 @@ function goToProjectDetail(project: IProject) {
     params: { id: project.id },
   });
 }
+
+onMounted(() => {
+  projectStore.setProjectSelected(null);
+});
 </script>
 
 <template>
@@ -56,7 +61,7 @@ function goToProjectDetail(project: IProject) {
             @click="goToProjectDetail(project)"
           >
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <h3>{{ project.name }}</h3>
+            <h3 class="text-left">{{ project.name }}</h3>
           </button>
 
           <div class="text-xs text-gray-500">

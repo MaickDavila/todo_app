@@ -13,8 +13,17 @@ const getTasksByProject = computed(() => taskStore.getTasksByProjectId(projectSe
 <template>
   <section v-if="projectSelected" class="flex flex-col gap-6">
     <div class="flex flex-col gap-3 w-full">
-      <div class="section-title">
-        <h2>{{ projectSelected.name }}</h2>
+      <div class="flex flex-col gap-3">
+        <button>
+          <router-link to="/projects" class="flex items-center gap-3">
+            <i class="fa-solid fa-arrow-left"></i>
+            <span class="text-xs text-gray-500">Back to projects</span>
+          </router-link>
+        </button>
+
+        <div class="section-title">
+          <h2>{{ projectSelected.name }}</h2>
+        </div>
       </div>
 
       <div class="text-xs text-gray-500">

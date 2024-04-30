@@ -7,6 +7,7 @@ import routerConfig from '@/router/router-config.ts';
 import { IProject } from '@/types/commonTypes.ts';
 import ProjectDetailContent from '@/components/projects/project-detail/ProjectDetailContent.vue';
 import PlusFloatingButton from '@/components/projects/components/PlusFloatingButton.vue';
+import taskStore from '@/components/projects/task.store.ts';
 
 const router = useRouter();
 
@@ -40,8 +41,8 @@ loadingPage();
   <div class="app-container">
     <app-header />
     <project-detail-content />
-    <app-menu-bar />
 
-    <plus-floating-button @click="" />
+    <plus-floating-button @click="taskStore.setIsOpenFormModal(true)" />
+    <app-menu-bar />
   </div>
 </template>
