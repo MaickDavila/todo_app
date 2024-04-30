@@ -34,6 +34,11 @@ body {
     hover:outline-none hover:brightness-90 hover:scale-105 transition-transform duration-300 ease-in-out;
 }
 
+.app-icon-button-outline {
+    @apply bg-white text-primary w-[40px] h-[40px] rounded-full border border-primary
+    hover:outline-none hover:brightness-90 hover:scale-105 transition-transform duration-300 ease-in-out;
+}
+
 .app-input {
     @apply bg-gray-100 text-black max-w-[308px] h-[49px] pl-6 w-full rounded-full outline-none
     hover:brightness-90;

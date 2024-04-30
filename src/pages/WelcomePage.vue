@@ -20,8 +20,10 @@ function goToHomePage() {
     return;
   }
 
+  routerConfig.HomePage.meta.transition = 'bounce';
   router.push(routerConfig.HomePage);
   mainStore.setUserName(userName.value);
+  routerConfig.HomePage.meta.transition = 'fade';
 }
 </script>
 

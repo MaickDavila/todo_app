@@ -29,6 +29,11 @@ const close = () => {
           class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
         >
           <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+            <div class="flex justify-end">
+              <button @click="close" class="app-icon-button">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
             <slot></slot>
           </div>
         </div>
@@ -68,7 +73,7 @@ const close = () => {
     transform: scale(1.05);
   }
   100% {
-    transform: scale(0);
+    transform: scale(0.5);
   }
 }
 </style>

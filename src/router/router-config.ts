@@ -1,6 +1,7 @@
 import WelcomePage from '@/pages/WelcomePage.vue';
 import HomePage from '@/pages/HomePage.vue';
-import ProjectsPage from '@/pages/ProjectsPage.vue';
+import ProjectsPage from '@/pages/projects/ProjectsPage.vue';
+import ProjectDetail from '@/pages/projects/ProjectDetail.vue';
 
 const routes = {
   WelcomePage: {
@@ -23,6 +24,14 @@ const routes = {
     path: '/projects',
     name: 'ProjectsPage',
     component: ProjectsPage,
+    meta: {
+      transition: 'slide-right',
+    },
+  },
+  ProjectDetailPage: {
+    path: '/projects/:id',
+    name: 'ProjectDetailPage',
+    component: ProjectDetail,
     meta: {
       transition: 'slide-right',
     },

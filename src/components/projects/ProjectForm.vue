@@ -43,7 +43,6 @@ function submitProject() {
 
     isLoading.value = false;
     isOpenFormModal.value = false;
-    clearForm();
   }, 700);
 }
 
@@ -56,7 +55,6 @@ function deleteProject() {
     projectStore.deleteProject(projectSelected.value?.id as number);
     isLoadingDeleting.value = false;
     isOpenFormModal.value = false;
-    clearForm();
   }, 700);
 }
 
@@ -73,10 +71,11 @@ function onMountedEvent() {
 
 watch(isOpenFormModal, (value) => {
   if (value) {
+    clearForm();
     onMountedEvent();
     return;
   }
-  clearForm();
+
   projectStore.setProjectSelected(null);
 });
 </script>

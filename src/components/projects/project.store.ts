@@ -17,6 +17,8 @@ const getters = {
   getProjects: () => state.projects as IProject[],
   getIsOpenFormModal: () => state.isOpenFormModal,
   getProjectSelected: () => state.projectSelected,
+  existProject: (projectId: number) => state.projects.some((project) => project.id === projectId),
+  getProject: (projectId: number) => state.projects.find((project) => project.id === projectId),
 };
 
 const mutations = {

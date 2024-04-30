@@ -1,14 +1,39 @@
 <script setup lang="ts">
 import AppBadge from '@/components/common/AppBadge.vue';
 import { EBadgeStates, IProject } from '@/types/commonTypes.ts';
-import { computed } from 'vue';
+import { computed, ref } from 'vue';
 import projectStore from '@/components/projects/project.store.ts';
+import AppModal from '@/components/common/AppModal.vue';
+import { useRouter } from 'vue-router';
+import routerConfig from '@/router/router-config.ts';
 
 const projectsList = computed(() => projectStore.getProjects());
+const isDeleteModalOpen = ref(false);
+const localProjectSelected = ref<IProject | null>(null);
+const isDeletingLoading = ref(false);
+const router = useRouter();
 
 function setProject(project: IProject) {
   projectStore.setProjectSelected(project);
   projectStore.setIsOpenFormModal(true);
+}
+
+function deleteProject(project?: IProject | null) {
+  if (!project) return;
+  isDeletingLoading.value = true;
+
+  setTimeout(() => {
+    projectStore.deleteProject(project.id);
+    isDeleteModalOpen.value = false;
+    isDeletingLoading.value = false;
+  }, 1000);
+}
+
+function goToProjectDetail(project: IProject) {
+  router.push({
+    name: routerConfig.ProjectDetailPage.name,
+    params: { id: project.id },
+  });
 }
 </script>
 
@@ -24,14 +49,15 @@ function setProject(project: IProject) {
         class="flex p-3 items-center justify-between rounded-2xl bg-white cursor-pointer hover:shadow transition duration-300 ease-in-out transform hover:-translate-y-1"
         v-for="(project, i) in projectsList"
         :key="i"
+        @click="goToProjectDetail(project)"
       >
-        <div class="flex flex-col">
-          <div class="font-bold text-base">
+        <div class="flex flex-col w-1/2">
+          <div class="font-bold text-base capitalize">
             <h3>{{ project.name }}</h3>
           </div>
 
-          <div class="line-clamp-2 text-xs text-gray-500">
-            <p>{{ project.description }}</p>
+          <div class="text-xs text-gray-500">
+            <p class="truncate">{{ project.description }}</p>
           </div>
 
           <div class="text-xs text-gray-500 font-light mt-3">
@@ -39,8 +65,18 @@ function setProject(project: IProject) {
           </div>
         </div>
 
-        <div class="flex flex-col items-end">
+        <div class="flex flex-col items-end w-1/2">
           <div class="flex items-center gap-3">
+            <button
+              class="app-icon-button-outline"
+              @click="
+                isDeleteModalOpen = true;
+                localProjectSelected = project;
+              "
+            >
+              <i class="fas fa-trash-alt"></i>
+            </button>
+
             <button class="app-icon-button" @click="setProject(project)">
               <i class="fas fa-edit"></i>
             </button>
@@ -49,4 +85,19 @@ function setProject(project: IProject) {
       </div>
     </div>
   </section>
+
+  <app-modal v-model="isDeleteModalOpen">
+    <div class="flex flex-col gap-6 pt-5">
+      <div><p>¿Estas seguro de eliminar el proyecto?</p></div>
+      <div class="flex justify-end gap-3">
+        <button class="app-button-outline" @click="deleteProject(localProjectSelected)">
+          <span v-if="isDeletingLoading">
+            <i class="fas fa-spinner fa-spin"></i>
+          </span>
+          <span v-else>Eliminar</span>
+        </button>
+        <button class="app-button" @click="isDeleteModalOpen = false">Cancelar</button>
+      </div>
+    </div>
+  </app-modal>
 </template>
