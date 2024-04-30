@@ -1,11 +1,19 @@
-module.exports = {
-  purge: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
-  darkMode: false, // or 'media' or 'class'
+/** @type {import('tailwindcss').Config} */
+export default {
+  content: ['./src/**/*.{js,vue}'],
   theme: {
-    extend: {},
-  },
-  variants: {
-    extend: {},
+    extend: {
+      colors: {
+        primary: '#5f33e2',
+        success: '#00c853',
+        danger: '#ff1744',
+        warning: '#ff9100',
+      },
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+        agbalumo: ['Agbalumo', 'sans-serif'],
+      },
+    },
   },
   plugins: [],
-}
+};

@@ -1,5 +1,6 @@
 @import "tailwind.css";
-/* add additional or custom styles */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Agbalumo&display=swap');
 
 :root {
     font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
@@ -7,11 +8,80 @@
     font-weight: 400;
 
     color-scheme: light dark;
-    color: rgba(255, 255, 255, 0.87);
-    background-color: #242424;
-
     font-synthesis: none;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
+body {
+    font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+    background-color: #F7F9FF;
+}
+
+.app-button {
+    @apply bg-primary text-white max-w-[308px] h-[59px] w-full rounded-full
+    hover:outline-none hover:brightness-90 hover:scale-105 transition-transform duration-300 ease-in-out;
+}
+
+.app-input {
+    @apply bg-gray-100 text-black max-w-[308px] h-[49px] pl-6 w-full rounded-full outline-none
+    hover:brightness-90;
+}
+
+
+
+.bounce-enter-active {
+    animation: bounce-in 0.5s;
+}
+
+.bounce-leave-active {
+    animation: bounce-out 0.5s;
+}
+
+@keyframes bounce-in {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes bounce-out {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(0);
+    }
+}
+
+.app-container {
+    @apply flex flex-col h-screen w-full p-6 bg-slate-50 gap-3;
+}
+
+.section-title {
+    @apply text-xl font-bold text-black flex items-center gap-3;
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #5f33e2;
+    border-radius: 12px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+}
+
