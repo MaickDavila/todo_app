@@ -40,7 +40,7 @@ body {
 }
 
 .app-input-textarea {
-    @apply bg-gray-100 pt-3 text-black max-w-[308px] h-[200px] pl-6 w-full rounded-lg outline-none
+    @apply bg-gray-100 pt-3 text-black max-w-[308px] pl-6 w-full rounded-lg outline-none
     hover:brightness-90;
 }
 
