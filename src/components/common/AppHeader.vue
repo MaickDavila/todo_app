@@ -10,7 +10,7 @@ const getUserName = computed(() => mainStore.getUserName());
   <div class="flex items-end justify-between p-3 px-6 rounded-3xl bg-white">
     <div class="text-lg">
       <h1>
-        Hola, <b>{{ getUserName }}</b>
+        Hello, <b>{{ getUserName }}</b>
       </h1>
     </div>
 
