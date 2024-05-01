@@ -9,10 +9,7 @@ A continuación, se muestran algunas capturas de pantalla de la aplicación:
 
 ### Pantalla de inicio de sesión
 
-![Login](./src/assets/screens/OrganizApp-Login.png)
-![Home](./src/assets/screens/OrganizApp-Home.png)
-![Tasks](./src/assets/screens/OrganizApp-Tasks.png)
-![Form](./src/assets/screens/OrganizApp-Form.png)
+![screens](./src/assets/screens/screens.jpg)
 
 ## Live Demo
 
