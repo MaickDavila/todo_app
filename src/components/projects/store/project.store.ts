@@ -1,5 +1,6 @@
 import { IProject } from '@/types/commonTypes.ts';
 import { reactive } from 'vue';
+import projectData from '@/components/projects/data/project.data.ts';
 
 interface IState {
   projects: IProject[];
@@ -8,7 +9,7 @@ interface IState {
 }
 
 const state = reactive<IState>({
-  projects: [],
+  projects: projectData,
   isOpenFormModal: false,
   projectSelected: null,
 });

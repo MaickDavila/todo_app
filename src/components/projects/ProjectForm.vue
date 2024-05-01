@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue';
-import projectStore from '@/components/projects/project.store.ts';
+import projectStore from '@/components/projects/store/project.store.ts';
 import { IProject } from '@/types/commonTypes.ts';
 import AppModal from '@/components/common/AppModal.vue';
 import AppButton from '@/components/common/AppButton.vue';

@@ -2,7 +2,7 @@
 import AppBadge from '@/components/common/AppBadge.vue';
 import { EBadgeStates, IProject } from '@/types/commonTypes.ts';
 import { computed, onMounted, ref } from 'vue';
-import projectStore from '@/components/projects/project.store.ts';
+import projectStore from '@/components/projects/store/project.store.ts';
 import AppModal from '@/components/common/AppModal.vue';
 import { useRouter } from 'vue-router';
 import routerConfig from '@/router/router-config.ts';
@@ -50,18 +50,14 @@ onMounted(() => {
     </div>
 
     <div class="w-full flex flex-col gap-3 h-auto">
-      <div
-        class="flex p-3 items-center justify-between rounded-2xl bg-white hover:shadow transition duration-300 ease-in-out transform hover:-translate-y-1"
-        v-for="(project, i) in projectsList"
-        :key="i"
-      >
+      <div class="main-card" v-for="(project, i) in projectsList" :key="i">
         <div class="flex flex-col gap-2 w-1/2">
           <button
             class="font-bold text-base capitalize flex items-center gap-3 hover:underline"
             @click="goToProjectDetail(project)"
           >
             <i class="fa-solid fa-arrow-up-right-from-square"></i>
-            <h3 class="text-left">{{ project.name }}</h3>
+            <span class="text-left">{{ project.name }}</span>
           </button>
 
           <div class="text-xs text-gray-500">

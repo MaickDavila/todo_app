@@ -2,7 +2,8 @@
 import AppBadge from '@/components/common/AppBadge.vue';
 import { EBadgeStates } from '@/types/commonTypes.ts';
 import { computed } from 'vue';
-import projectStore from '@/components/projects/project.store.ts';
+import projectStore from '@/components/projects/store/project.store.ts';
+import routerConfig from '@/router/router-config.ts';
 
 const projectsList = computed(() => projectStore.getProjects());
 </script>
@@ -15,13 +16,18 @@ const projectsList = computed(() => projectStore.getProjects());
     </div>
 
     <div class="w-full flex gap-3 overflow-x-auto overscroll-x-none py-2">
-      <div class="todo-list-item" v-for="(todo, i) in projectsList" :key="i">
+      <div
+        class="todo-list-item"
+        v-for="(todo, i) in projectsList"
+        :key="i"
+        @click="() => $router.push({ name: routerConfig.ProjectDetailPage.name, params: { id: todo.id } })"
+      >
         <div class="text-xs text-gray-500 font-light">
           <h3>{{ todo.name }}</h3>
         </div>
 
-        <div class="font-bold text-base py-3 line-clamp-2 overflow-hidden">
-          <p>{{ todo.description }}n</p>
+        <div class="font-bold text-base py-3">
+          <p>{{ todo.description || todo.name }}</p>
         </div>
 
         <div class="text-xs text-gray-500 font-light">

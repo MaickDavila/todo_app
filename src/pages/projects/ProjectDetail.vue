@@ -2,12 +2,13 @@
 import AppHeader from '@/components/common/AppHeader.vue';
 import AppMenuBar from '@/components/common/AppMenuBar.vue';
 import { useRouter } from 'vue-router';
-import projectStore from '@/components/projects/project.store.ts';
+import projectStore from '@/components/projects/store/project.store.ts';
 import routerConfig from '@/router/router-config.ts';
 import { IProject } from '@/types/commonTypes.ts';
 import ProjectDetailContent from '@/components/projects/project-detail/ProjectDetailContent.vue';
 import PlusFloatingButton from '@/components/projects/components/PlusFloatingButton.vue';
-import taskStore from '@/components/projects/task.store.ts';
+import taskStore from '@/components/projects/store/task.store.ts';
+import TaskForm from '@/components/projects/project-detail/TaskForm.vue';
 
 const router = useRouter();
 
@@ -43,6 +44,7 @@ loadingPage();
     <project-detail-content />
 
     <plus-floating-button @click="taskStore.setIsOpenFormModal(true)" />
+    <task-form />
     <app-menu-bar />
   </div>
 </template>

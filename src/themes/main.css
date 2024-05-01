@@ -40,7 +40,7 @@ body {
 }
 
 .app-input {
-    @apply bg-gray-100 text-black max-w-[308px] h-[49px] pl-6 w-full rounded-full outline-none
+    @apply bg-gray-100 text-black max-w-[308px] h-[49px] px-6 w-full rounded-full outline-none
     hover:brightness-90;
 }
 
@@ -108,3 +108,6 @@ body {
     background-color: #f1f1f1;
 }
 
+.main-card{
+    @apply flex p-3 items-center justify-between rounded-2xl bg-white hover:shadow transition duration-300 ease-in-out transform hover:-translate-y-1
+}

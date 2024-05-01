@@ -1,5 +1,10 @@
 <script setup lang="ts">
 import summaryCoverPng from '@/assets/home/summary-cover.png';
+import { computed } from 'vue';
+import taskStore from '@/components/projects/store/task.store.ts';
+
+const todayTasks = computed(() => taskStore.getTodayTasks());
+const todayCompletedTasks = computed(() => taskStore.getTodayCompletedTasks());
 </script>
 
 <template>
@@ -7,7 +12,7 @@ import summaryCoverPng from '@/assets/home/summary-cover.png';
     <div class="flex flex-col w-1/2 items-start justify-between h-full">
       <h3 class="text-xs font-light">Today</h3>
       <p class="text-lg">
-        <b>0/0 task</b>
+        <b>{{ todayCompletedTasks.length }}/{{ todayTasks.length }} task</b>
       </p>
     </div>
 

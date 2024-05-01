@@ -9,6 +9,7 @@ import mainStore from '@/store/main.store.ts';
 
 const userName = ref('');
 const router = useRouter();
+const isLoading = ref(false);
 
 function isValidForm() {
   return userName.value.trim().length > 0;
@@ -19,11 +20,15 @@ function goToHomePage() {
     alert('Por favor, ingresa tu nombre');
     return;
   }
+  isLoading.value = true;
 
-  routerConfig.HomePage.meta.transition = 'bounce';
-  router.push(routerConfig.HomePage);
-  mainStore.setUserName(userName.value);
-  routerConfig.HomePage.meta.transition = 'fade';
+  setTimeout(() => {
+    routerConfig.HomePage.meta.transition = 'bounce';
+    router.push(routerConfig.HomePage);
+    mainStore.setUserName(userName.value);
+    routerConfig.HomePage.meta.transition = 'fade';
+    isLoading.value = false;
+  }, 1000);
 }
 </script>
 
@@ -34,7 +39,7 @@ function goToHomePage() {
         <img :src="welcomeScreenPng" alt="Welcome Screen" class="w-80" />
       </div>
 
-      <app-logo class="scale-150" />
+      <app-logo class="scale-150" prevent-default />
 
       <form class="flex flex-col gap-3 w-full items-center justify-center" @submit.prevent="goToHomePage">
         <div>
@@ -42,7 +47,7 @@ function goToHomePage() {
         </div>
 
         <input v-model="userName" type="text" placeholder="Ej. Jhon Doe" class="app-input" autofocus />
-        <app-button> Iniciar sesión </app-button>
+        <app-button :loading="isLoading"> Iniciar sesión </app-button>
       </form>
     </div>
   </div>

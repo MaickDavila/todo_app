@@ -4,7 +4,7 @@ import AppHeader from '@/components/common/AppHeader.vue';
 import ProjectsList from '@/components/projects/ProjectsList.vue';
 import PlusFloatingButton from '@/components/projects/components/PlusFloatingButton.vue';
 import ProjectForm from '@/components/projects/ProjectForm.vue';
-import projectStore from '@/components/projects/project.store.ts';
+import projectStore from '@/components/projects/store/project.store.ts';
 
 const onClickPlusButton = () => {
   projectStore.setIsOpenFormModal(true);
