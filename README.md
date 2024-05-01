@@ -12,9 +12,7 @@ A continuación, se muestran algunas capturas de pantalla de la aplicación:
 ![screens](./src/assets/screens/screens.jpg)
 
 ## Live Demo
-
-Puedes ver una demostración en vivo de la aplicación en el siguiente
-enlace: [URL de la demostración](https://organizapp.maickdavila.dev/)
+https://organizapp.maickdavila.dev/
 
 ## Características
 
