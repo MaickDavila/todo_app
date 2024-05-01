@@ -31,7 +31,7 @@ const offset = computed(() => {
         :style="{ strokeDashoffset: offset }"
       />
     </svg>
-    <span class="z-auto absolute">{{ percentage }}%</span>
+    <span class="z-auto absolute">{{ percentage || '0' }}%</span>
   </div>
 </template>
 
